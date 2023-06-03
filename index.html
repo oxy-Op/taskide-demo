@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--Head -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link href="/static/assets/logo.svg" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="/static/js/index.js"></script>
+    <title>Taskme: Set your tasks</title>
+    <!-- Head End -->
+</head>
+
+<body>
+    <!-- wrapper -->
+    <header>
+        <div id="logo">
+            <a href="/">
+                <img id="icon" src="/static/assets/logo.svg" width="30" height="30" alt="Taskme Icon" /></a>
+        </div>
+        <div class="toggle">
+            <button id="toggle_on" aria-label="Open Menu">
+                <img src="/static/assets/hamburger.svg" alt="Hamburger Menu" width="30" height="30" />
+            </button>
+            <button id="toggle_off" aria-label="Close Menu">
+                <img src="/static/assets/toggleoff.svg" alt="Toggle Off" width="30" height="30" />
+            </button>
+        </div>
+        <div class="main_text">
+            <a href="/"><span class="text_t">Taskide</span></a>
+        </div>
+        <div class="profile_icon">
+            <img src="/static/assets/demo_profile.svg" alt="Profile Icon" width="25" height="25" />
+        </div>
+        <div id="error">
+            <span>Error</span>
+            <button id="error_dismiss">
+                <img src="/static/assets/cross.svg" alt="cancel" width="15" height="15" />
+            </button>
+        </div>
+        <div class="profile">
+            <div class="user">
+                <p>Demo user</p>
+                <p id="user_id">ID: abcd</p>
+            </div>
+            <div class="logout">
+                <button class="logoutbtn">Logout</button>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper">
+        <!-- leftpane where task list are present -->
+        <div class="leftpane">
+            <!-- each individual list is in lists container -->
+            <div class="lists">
+                <!-- <li>
+                    <a href="/me"><span>Tasks</span></a>
+                    <div class="">
+                        <button class="list_task_edit" aria-label="Edit Task">
+                            <img src="/static/assets/edit.svg" alt="Edit Task">
+                        </button>
+                        <button class="task_delete" aria-label="Delete Task">
+                            <img src="/static/assets/delete.svg" alt="Delete Task">
+                        </button>
+                    </div>
+                </li> -->
+            </div>
+            <!-- bottom container inside leftpane which holds add list button  -->
+            <div class="bottom-leftpane">
+                <button id="addlist_btn" tabindex="0" onclick="addList();" class="addlist">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span>Add a list</span>
+                </button>
+            </div>
+            <!-- bottom container end -->
+        </div>
+        <!-- end leftpane -->
+
+        <!-- container where tasks are displayed -->
+        <div class="container">
+            <!-- each task is inside tasks class container -->
+            <div class="tasks">
+                <!-- <li>
+                    <span>This is your first task</span>
+                    <div class="options">
+                        <button class="task_edit" aria-label="Edit Task">
+                            <img src="/static/assets/edit.svg" alt="Edit Task">
+                        </button>
+                        <button class="task_delete" aria-label="Delete Task">
+                            <img src="/static/assets/delete.svg" alt="Delete Task">
+                        </button>
+                    </div>
+                </li> -->
+
+                <!-- data is dynamically added here -->
+            </div>
+            <!-- end tasks -->
+            <!-- wrapper contains the textarea and send button to append task -->
+            <div class="addwraper">
+                <!-- container for send task button and textarea -->
+                <div class="add_new_task">
+                    <label for="task_text"></label>
+                    <textarea id="task_text" placeholder="Set a task" rows="1" maxlength="200" autofocus></textarea>
+                    <button id="add_task" onclick="addTask();" aria-label="Add Task">
+                        <img id="send_task" src="/static/assets/send_task.png" alt="Send Task" width="20" />
+                    </button>
+                </div>
+                <!-- end textarea -->
+            </div>
+
+            <!-- end wrapper -->
+        </div>
+
+        <!-- end container -->
+    </div>
+</body>
+
+</html>

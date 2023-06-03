@@ -1,0 +1,694 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+
+a {
+    text-decoration: none;
+    text-align: center;
+    color: #e0a80d;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+a:focus {
+    outline: none;
+}
+
+:root {
+    --body-color: #444654;
+    --container-background: rgb(131, 58, 180);
+    --container-gradient: radial-gradient(circle, rgba(252, 70, 107, 1) 20%, rgba(194, 194, 194, 1) 100%, rgba(82, 92, 236, 1) 100%);
+
+    --task-color: linear-gradient(136deg, rgba(18, 116, 175, 1) 4%, rgba(23, 161, 251, 1) 22%, rgba(0, 154, 255, 1) 41%, rgba(84, 102, 207, 0.9697128851540616) 71%, rgba(37, 141, 213, 1) 89%, rgba(98, 185, 240, 1) 99%);
+    --task-hover-color: linear-gradient(136deg, rgba(18, 116, 175, 1) 13%, rgba(98, 185, 240, 1) 25%, rgba(69, 161, 221, 1) 42%, rgba(37, 141, 213, 1) 66%, rgba(84, 102, 207, 1) 94%);
+
+    --btn-hover-color: linear-gradient(136deg, rgba(23, 161, 251, 1) 0%, rgba(240, 98, 144, 1) 77%);
+    --tasksubmit-color: linear-gradient(136deg, rgba(252, 220, 5, 1) 7%, rgba(240, 98, 144, 1) 56%);
+
+    --textarea-bottom-color: linear-gradient(90deg, rgba(0, 175, 129, 1) 5%, rgba(3, 146, 183, 1) 46%, rgba(7, 149, 255, 1) 100%);
+    --leftpane-background-color: radial-gradient(circle, rgba(231, 187, 129, 1) 55%, rgba(237, 233, 236, 1) 97%);
+    --addlist-btn-color: linear-gradient(90deg, rgba(222, 139, 119, 1) 0%, rgba(210, 90, 27, 1) 44%, rgba(171, 74, 45, 1) 76%, rgba(224, 143, 100, 1) 96%);
+    --list-hover-color: linear-gradient(90deg, rgba(237, 183, 170, 1) 14%, rgba(210, 90, 27, 1) 44%, rgba(171, 74, 45, 1) 76%, rgba(224, 143, 100, 1) 96%);
+
+    --btm-margin: 30px
+}
+
+html,
+body {
+    font-family: 'Noto Sans', sans-serif;
+    background: linear-gradient(282deg, #00b398 8%, #07b6cf 93%);
+    height: 100%;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+
+.wrapper {
+    display: flex;
+    height: 93%;
+    position: relative;
+}
+
+#icon {
+    margin-left: 15px;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    height: 7%;
+    background-color: #444654;
+    align-items: center;
+}
+
+header .toggle {
+    display: none;
+}
+
+#toggle_off {
+    padding: 5px;
+    display: none;
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+header div #toggle_on {
+    padding: 5px;
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+header div #toggle_off,
+#toggle_on:hover {
+    box-shadow: 0.3px 0.3px 3px rgb(27, 21, 29);
+}
+
+header .main_text {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+
+}
+
+header #text_t {
+    text-align: center;
+    color: #e0a80d;
+}
+
+header .profile_icon {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 30px;
+}
+
+header .profile {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    z-index: 2;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    right: 30px;
+    top: 45px;
+    border-radius: 10px;
+}
+
+header .profile .user {
+    text-align: center;
+    padding: 20px;
+}
+
+header .profile .user p {
+    margin: 0;
+    color: #2d2d2d;
+}
+
+header .profile .user #user_id {
+    font-size: small;
+    color: #444654;
+}
+
+header .profile .logout {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .profile .logout button {
+    width: 80px;
+    height: 30px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 10px;
+    background-color: #00b398;
+    transition: transform 0.3s ease-in-out;
+}
+
+header .profile .logout button:hover {
+    background-color: #0f8c79;
+    transform: scale(1.03);
+    outline: solid #07b6cf;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--container-background);
+    background: var(--container-gradient);
+    width: 70%;
+    margin-top: 10px;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 4px 4px 2px -2px rgb(70, 63, 63);
+}
+
+.tasks {
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+}
+
+.tasks li {
+    display: flex;
+    /* flex-direction: column; */
+    padding: 1rem;
+    width: 90%;
+    height: auto;
+    margin-top: 5px;
+    align-self: center;
+    background: var(--task-color);
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0.3px 0.3px 3px rgb(27, 21, 29);
+}
+
+.tasks li:is(:hover, :focus) {
+    background: var(--task-hover-color);
+    transform: scale(1.02);
+    outline: solid #07b6cf;
+}
+
+.tasks:nth-child(1) {
+    margin-top: 5px;
+}
+
+.tasks li:last-child {
+    margin-bottom: 10px;
+}
+
+
+.tasks li span {
+    width: 90%;
+    height: auto;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    white-space: break-spaces;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.options>button,
+.options>img {
+    background: transparent;
+    border: none;
+    outline: none;
+    vertical-align: bottom;
+}
+
+.options>button:hover {
+    background: var(--btn-hover-color);
+}
+
+.taskedit {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    height: inherit;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    background: transparent;
+    resize: none;
+    max-height: 300px;
+}
+
+.taskedit:focus {
+    outline: none;
+}
+
+.editoptions {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.tasksubmit {
+    background: var(--tasksubmit-color);
+    color: black;
+    width: 80px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    box-shadow: 0.3px 0.3px 3px rgb(27, 21, 29);
+}
+
+.tasksubmit:hover:enabled {
+    outline: solid rgb(242, 127, 33);
+}
+
+
+.tasksubmit:disabled {
+    background: gray;
+}
+
+.cancelsubmit {
+    margin-left: 10px;
+    background-color: rgb(231, 231, 230);
+    width: 80px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    box-shadow: 0.3px 0.3px 3px rgb(27, 21, 29);
+}
+
+.cancelsubmit:is(:hover) {
+    background-color: rgb(215, 211, 211);
+}
+
+.addwraper {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: auto;
+    max-height: 300px;
+    margin-left: 20px;
+    padding-top: 10px;
+    border-top: 2px solid rgb(22, 91, 69);
+    margin-bottom: var(--btm-margin);
+}
+
+.add_new_task {
+    display: flex;
+    background: var(--textarea-bottom-color);
+    margin: auto;
+    width: 90%;
+    height: auto;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 6px 0px rgb(51, 55, 81);
+}
+
+#task_text {
+    /* overflow: hidden; */
+    border: none;
+    resize: none;
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+    caret-color: rgba(16, 54, 182, 0.611);
+    width: 100%;
+    padding-left: 20px;
+    margin-right: 60px;
+    min-height: 16px;
+    max-height: 300px;
+}
+
+#task_text::placeholder {
+    color: #2d2d2d;
+}
+
+#task_text:focus {
+    outline: none;
+    /* border-bottom: 1.5px solid saddlebrown; */
+}
+
+#add_task {
+    border: none;
+    background: transparent;
+    box-shadow: 0 0 0.5px 0 rgba(47, 43, 69, 0.271);
+    transition: transform 0.3s ease-in-out;
+
+}
+
+#add_task:hover {
+    box-shadow: 0 0 1px 0 rgb(90, 73, 85);
+    padding: 1px;
+    transform: scale(1.15) translateX(5px);
+}
+
+
+.leftpane {
+    display: flex;
+    flex-direction: column;
+    background: var(--leftpane-background-color);
+    width: 25%;
+    height: auto;
+    margin-left: 50px;
+    margin-top: 10px;
+    box-shadow: -4px -3px 2px -2px rgb(70, 63, 63);
+    border-radius: 10px 0 0 10px;
+}
+
+.lists {
+    text-align: center;
+    /* List container inside leftpane */
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: 90%;
+}
+
+.lists li {
+    /* List inside lists */
+    display: flex;
+    position: relative;
+    width: 90%;
+    height: auto;
+    list-style: none;
+    border-radius: 8px;
+    padding: 14px;
+    margin-top: 2px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.lists li a:hover {
+    cursor: pointer;
+}
+
+.lists li.selected {
+    background: linear-gradient(0deg, rgba(35, 80, 80, 1) 0%, rgba(40, 112, 131, 1) 43%, rgba(36, 59, 60, 1) 100%);
+    ;
+}
+
+
+.lists li a span {
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.lists li::before {
+    content: url(/static/assets/svg_list.svg);
+    vertical-align: middle;
+    padding-right: 10px;
+}
+
+.lists li div {
+    position: absolute;
+    right: 30px;
+}
+
+.lists li div>button,
+button>img {
+    background: transparent;
+    border: none;
+    outline: none;
+    vertical-align: middle;
+}
+
+.lists li div>button:hover {
+    background: var(--btn-hover-color);
+}
+
+.lists li:hover {
+    background: var(--list-hover-color);
+    outline: solid #494544;
+    transform: scale(1.01);
+}
+
+.lists:nth-child(1) {
+    margin-top: 5px;
+}
+
+
+.bottom-leftpane {
+    /* Bottom container inside leftpane */
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: 10%;
+    margin-bottom: var(--btm-margin);
+    background-color: inherit;
+    box-shadow: none;
+    border-top: 2px solid rgb(22, 91, 69);
+
+}
+
+.addlist {
+    margin: auto;
+    border: none;
+    outline: none;
+    width: 80%;
+    border-radius: 5px;
+    padding: 1rem;
+    background: var(--addlist-btn-color);
+    box-shadow: inset 0 0 5px 0 rgb(17, 13, 13);
+    transition: transform 0.2s ease-out;
+}
+
+.addlist:is(:hover) {
+    transform: scale(1.05);
+    box-shadow: 0 0 5px 2px rgba(99, 30, 95, 0.611);
+}
+
+.addlist span {
+    font-size: 18px;
+}
+
+.addlist img {
+    vertical-align: baseline;
+}
+
+
+.addlist::placeholder {
+    color: #000000c4;
+    font-size: 16px;
+}
+
+#input_list {
+    caret-color: #7f95b7;
+}
+
+#input_list:focus {
+    outline: none;
+}
+
+.list_tasksubmit img {
+    width: 20px;
+    height: 20px;
+}
+
+.list_cancelsubmit img {
+    width: 20px;
+    height: 20px;
+}
+
+.list_textbox {
+    background: transparent;
+    border: solid #7f95b7;
+    caret-color: rgb(14, 168, 220);
+    outline: none;
+    color: rgb(255, 0, 0);
+}
+
+.list_textbox:focus {
+    outline: none;
+}
+
+#error {
+    display: none;
+    flex-direction: row;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    z-index: 3;
+    background-color: rgb(235, 162, 16);
+    width: auto;
+    padding: 0 10px;
+    max-width: 400px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 50px;
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease-out;
+}
+
+#error span {
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: 15px;
+    flex-grow: 1;
+}
+
+#error:hover {
+    outline: solid 1px #2d2d2d;
+    transform: scale(1.02);
+}
+
+#error #error_dismiss {
+    background: transparent;
+    outline: none;
+    border: none;
+    margin-right: 10px;
+    transition: transform 0.2s ease-out;
+}
+
+#error #error_dismiss:hover {
+    transform: scale(1.1);
+    box-shadow: 0.3px 0.3px 3px rgb(27, 21, 29);
+}
+
+/* CSS code for desktop */
+/* ... existing styles ... */
+
+
+
+@media (max-width: 768px) {
+    /* CSS code for mobile devices */
+
+    html,
+    body {
+        background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    #logo{
+        display: none;
+    }
+
+    .tasks li {
+        padding: 0.8rem;
+        width: 88%;
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+
+    .tasks li:is(:hover, :focus) {
+        transform: scale(1.01);
+    }
+
+    .tasks:nth-child(1) {
+        margin-top: 0px;
+    }
+
+    .tasks li:last-child {
+        margin-bottom: 10px;
+    }
+
+    .addwraper {
+        width: 95%;
+        padding-top: 8px;
+        margin-left: 10px;
+        margin-bottom: 20px;
+    }
+
+    .add_new_task {
+        padding: 0.8rem;
+    }
+
+    #task_text {
+        padding-left: 10px;
+    }
+
+    #add_task:hover {
+        padding: 1px;
+        transform: scale(1.1) translateX(2px);
+    }
+
+    .leftpane {
+        display: flex;
+        width: 0%;
+        z-index: 1;
+        position: absolute;
+        margin: 0;
+        height: 100%;
+        margin-top: 10px;
+        border-radius: 0px;
+    }
+
+    header .toggle {
+        display: block;
+    }
+
+    .lists li {
+        width: 100%;
+    }
+
+    .list_textbox {
+        width: 75%;
+        padding-right: 4px;
+    }
+
+
+    .bottom-leftpane {
+        width: 90%;
+        display: none;
+        height: 0%;
+        margin: 0;
+        padding-top: 8px;
+        margin-bottom: 80px;
+    }
+
+    .addlist {
+        width: 90%;
+        padding: 1rem;
+    }
+
+}
+
+@media (max-width: 1229px) and (min-width: 769px) {
+
+    .lists li a span {
+        max-width: 100px;
+    }
+}
