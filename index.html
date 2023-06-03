@@ -19,26 +19,26 @@
     <header>
         <div id="logo">
             <a href="/">
-                <img id="icon" src="/static/assets/logo.svg" width="30" height="30" alt="Taskme Icon" /></a>
+                <img id="icon" src="static/assets/logo.svg" width="30" height="30" alt="Taskme Icon" /></a>
         </div>
         <div class="toggle">
             <button id="toggle_on" aria-label="Open Menu">
-                <img src="/static/assets/hamburger.svg" alt="Hamburger Menu" width="30" height="30" />
+                <img src="static/assets/hamburger.svg" alt="Hamburger Menu" width="30" height="30" />
             </button>
             <button id="toggle_off" aria-label="Close Menu">
-                <img src="/static/assets/toggleoff.svg" alt="Toggle Off" width="30" height="30" />
+                <img src="static/assets/toggleoff.svg" alt="Toggle Off" width="30" height="30" />
             </button>
         </div>
         <div class="main_text">
             <a href="/"><span class="text_t">Taskide</span></a>
         </div>
         <div class="profile_icon">
-            <img src="/static/assets/demo_profile.svg" alt="Profile Icon" width="25" height="25" />
+            <img src="static/assets/demo_profile.svg" alt="Profile Icon" width="25" height="25" />
         </div>
         <div id="error">
             <span>Error</span>
             <button id="error_dismiss">
-                <img src="/static/assets/cross.svg" alt="cancel" width="15" height="15" />
+                <img src="static/assets/cross.svg" alt="cancel" width="15" height="15" />
             </button>
         </div>
         <div class="profile">
@@ -56,17 +56,17 @@
         <div class="leftpane">
             <!-- each individual list is in lists container -->
             <div class="lists">
-                <!-- <li>
-                    <a href="/me"><span>Tasks</span></a>
+                <li>
+                    <a><span>Tasks</span></a>
                     <div class="">
                         <button class="list_task_edit" aria-label="Edit Task">
-                            <img src="/static/assets/edit.svg" alt="Edit Task">
+                            <img src="static/assets/edit.svg" alt="Edit Task">
                         </button>
-                        <button class="task_delete" aria-label="Delete Task">
-                            <img src="/static/assets/delete.svg" alt="Delete Task">
+                        <button class="list_task_delete" aria-label="Delete Task">
+                            <img src="static/assets/delete.svg" alt="Delete Task">
                         </button>
                     </div>
-                </li> -->
+                </li>
             </div>
             <!-- bottom container inside leftpane which holds add list button  -->
             <div class="bottom-leftpane">
@@ -88,17 +88,17 @@
         <div class="container">
             <!-- each task is inside tasks class container -->
             <div class="tasks">
-                <!-- <li>
+                <li>
                     <span>This is your first task</span>
                     <div class="options">
                         <button class="task_edit" aria-label="Edit Task">
-                            <img src="/static/assets/edit.svg" alt="Edit Task">
+                            <img src="static/assets/edit.svg" alt="Edit Task">
                         </button>
                         <button class="task_delete" aria-label="Delete Task">
-                            <img src="/static/assets/delete.svg" alt="Delete Task">
+                            <img src="static/assets/delete.svg" alt="Delete Task">
                         </button>
                     </div>
-                </li> -->
+                </li>
 
                 <!-- data is dynamically added here -->
             </div>
@@ -110,7 +110,7 @@
                     <label for="task_text"></label>
                     <textarea id="task_text" placeholder="Set a task" rows="1" maxlength="200" autofocus></textarea>
                     <button id="add_task" onclick="addTask();" aria-label="Add Task">
-                        <img id="send_task" src="/static/assets/send_task.png" alt="Send Task" width="20" />
+                        <img id="send_task" src="static/assets/send_task.png" alt="Send Task" width="20" />
                     </button>
                 </div>
                 <!-- end textarea -->
