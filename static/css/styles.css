@@ -431,7 +431,7 @@ header .profile .logout button:hover {
 }
 
 .lists li::before {
-    content: url(/static/assets/svg_list.svg);
+    content: url(static/assets/svg_list.svg);
     vertical-align: middle;
     padding-right: 10px;
 }
@@ -602,7 +602,7 @@ button>img {
         width: 100%;
     }
 
-    #logo{
+    #logo {
         display: none;
     }
 
