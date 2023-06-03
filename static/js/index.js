@@ -168,7 +168,7 @@ function addTask() {
     });
     // item.
     $(".tasks").append(item);
-    $(".tasks li").last().append("<div class='options'><button class = 'task_edit' ><img src='/static/assets/edit.svg' alt='edit svg'></button><button class='task_delete' ><img src='/static/assets/delete.svg' alt='delete svg'></button></div>")
+    $(".tasks li").last().append("<div class='options'><button class = 'task_edit' ><img src='static/assets/edit.svg' alt='edit svg'></button><button class='task_delete' ><img src='static/assets/delete.svg' alt='delete svg'></button></div>")
     textarea_.val('');
     textarea_.height('');
     var myElement = $('.tasks');
@@ -198,7 +198,7 @@ function addList() {
                     myElement.scrollTop(myElement[0].scrollHeight - myElement.outerHeight()); // Scroll to the bottom of the list container
                 });
 
-                item.append("<div><button class='list_task_edit'><img src='/static/assets/edit.svg' alt='edit svg'></button><button class='list_task_delete'><img src='/static/assets/delete.svg' alt='delete svg'></button></div>");
+                item.append("<div><button class='list_task_edit'><img src='static/assets/edit.svg' alt='edit svg'></button><button class='list_task_delete'><img src='static/assets/delete.svg' alt='delete svg'></button></div>");
                 $('.lists').append(item); // Append the new item to the list container
 
                 parent.empty().append(child); // Replace the input with the original button
@@ -245,10 +245,10 @@ $(document).on('click', '.list_task_edit', function () {
     // });
 
     // Create the submit button
-    var submit = $('<button>').attr('type', 'submit').addClass('list_tasksubmit').append($('<img>').attr('src', '/static/assets/tick.svg'))
+    var submit = $('<button>').attr('type', 'submit').addClass('list_tasksubmit').append($('<img>').attr('src', 'static/assets/tick.svg'))
 
     // Create the cancel button
-    var cancel = $('<button>').attr('type', 'submit').addClass('list_cancelsubmit').append($('<img>').attr('src', '/static/assets/cross.svg'))
+    var cancel = $('<button>').attr('type', 'submit').addClass('list_cancelsubmit').append($('<img>').attr('src', 'static/assets/cross.svg'))
 
     var editoption = $('<div>').append(submit, cancel);
     // Append to parent container
